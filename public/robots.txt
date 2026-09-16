@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /gengen/
+
+Sitemap: https://connected-mate.github.io/gengen/sitemap.xml
