@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Create your GenGen profile frame, banners and certificate image. Your photo and certificate stay on your device.">
+  <meta name="robots" content="noindex">
+  <title>GenGen Studio</title>
+  <link rel="preload" href="/gengen/fonts/bricolage-grotesque.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./studio.css">
+  <script type="module" src="./studio.mjs"></script>
+</head>
+<body>
+  <a class="skip" href="#editor">Skip to studio</a>
+  <header class="shell header"><a class="wordmark" href="/gengen/">GenGen <span>Studio</span></a><a class="back" href="/gengen/">About GenGen <span aria-hidden="true">↗</span></a></header>
+  <main class="shell">
+    <section class="intro" aria-labelledby="title"><p class="eyebrow">YOUR PRACTICE. YOUR MARK.</p><h1 id="title">Make it yours.</h1><p>Your GenGen seal, made for the places you show up.<br>Bring your certificate. Choose your photo. Keep the result.</p><p class="privacy">Everything happens on this device. Nothing is uploaded.</p></section>
+    <section id="editor" class="editor" aria-label="GenGen image studio">
+      <div class="controls">
+        <section class="control-section" aria-labelledby="certificate-title">
+          <h2 id="certificate-title"><span class="step">01</span> Unlock your exports</h2>
+          <p>Import the GenGen certificate downloaded from Builder Nutch.</p>
+          <p class="fine">Builder Nutch → Usage → Share → GenGen certificate.</p>
+          <label class="file-button">Choose certificate <span>JSON · up to 64 KB</span><input id="certificate" type="file" accept=".json,application/json" aria-label="Choose GenGen certificate JSON"></label>
+          <div class="file-detail"><p id="certificate-status">No certificate yet. Previews are marked SAMPLE.</p><button id="clear-certificate" class="quiet" type="button" hidden>Remove certificate</button></div>
+          <p class="fine">A certificate attests to local recorded history. It is not digitally signed or independently verified.</p>
+          <div class="certificate-help"><a href="/gengen/#eligibility">How to earn GenGen ↗</a><a href="https://github.com/Connected-Mate/builder-nutch/releases/latest">Get the Mac app ↗</a></div>
+        </section>
+        <section class="control-section" aria-labelledby="photo-title">
+          <h2 id="photo-title"><span class="step">02</span> Set your portrait</h2>
+          <p>Required for a profile image. Optional for banners and the certificate post.</p>
+          <label class="file-button">Choose or replace photo <span>PNG, JPEG or WebP · up to 15 MB</span><input id="photo" type="file" accept="image/png,image/jpeg,image/webp" aria-label="Choose profile photo"></label>
+          <p id="photo-status" class="file-detail">No photo selected. SVG and HEIC are not supported.</p>
+          <fieldset id="crop-controls" disabled><legend class="sr-only">Photo crop</legend>
+            <label class="slider-label" for="zoom">Zoom <output id="zoom-value" for="zoom">1.00×</output></label><input id="zoom" type="range" min="1" max="3" step="0.01" value="1">
+            <label class="slider-label" for="pan-x">Horizontal position <output id="pan-x-value" for="pan-x">Center</output></label><input id="pan-x" type="range" min="-1" max="1" step="0.01" value="0">
+            <label class="slider-label" for="pan-y">Vertical position <output id="pan-y-value" for="pan-y">Center</output></label><input id="pan-y" type="range" min="-1" max="1" step="0.01" value="0">
+            <div class="crop-actions"><button id="reset-crop" class="quiet" type="button">Reset crop</button><button id="clear-photo" class="quiet" type="button">Remove photo</button></div>
+          </fieldset>
+        </section>
+        <section class="control-section name-section" aria-labelledby="name-title"><h2 id="name-title"><span class="step">03</span> Add your name</h2><label class="sr-only" for="name">Display name, optional</label><input id="name" type="text" maxlength="48" placeholder="Your name (optional)" autocomplete="off" aria-describedby="name-note"><p id="name-note" class="fine">Chosen by you. The certificate does not verify your identity.</p></section>
+      </div>
+      <div class="workspace">
+        <div class="formats" role="group" aria-label="Image format"><button type="button" data-format="profile" aria-pressed="true">Profile</button><button type="button" data-format="linkedin" aria-pressed="false">LinkedIn</button><button type="button" data-format="x" aria-pressed="false">X banner</button><button type="button" data-format="certificate" aria-pressed="false">Certificate post</button></div>
+        <figure class="preview"><div id="canvas-stage" class="canvas-stage"><canvas id="preview" width="800" height="800" role="img" aria-label="Sample GenGen profile preview. Import a certificate to export."></canvas></div><figcaption><span id="dimensions">800 × 800 · transparent PNG</span><span id="preview-tip">With a photo, drag the profile preview to position it.</span></figcaption></figure>
+        <div class="export-row"><div><p id="export-reason">Import your certificate to unlock PNG exports.</p><a id="next-input" class="next-input" href="#certificate-title">Choose certificate <span aria-hidden="true">↓</span></a><p class="fine">Download only. Share it yourself, whenever you’re ready.</p></div><button id="export" type="button" disabled>Download PNG <span aria-hidden="true">↓</span></button></div>
+        <p id="status" class="status" role="status" aria-live="polite" aria-atomic="true">Loading the studio…</p>
+      </div>
+    </section>
+    <noscript><p class="noscript">Enable JavaScript to create and download your images. Your files stay on this device.</p></noscript>
+  </main>
+  <footer class="shell"><span>GenGen · Recorded activity</span><span>Made with your history. Kept on your device.</span></footer>
+</body>
+</html>
