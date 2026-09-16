@@ -1,6 +1,6 @@
 {
   "name": "gengen",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "private": true,
   "description": "The GenGen label for recorded AI activity.",
   "type": "module",
@@ -10,6 +10,7 @@
   },
   "scripts": {
     "build": "node scripts/build.mjs",
-    "check": "node scripts/check.mjs"
+    "check": "node scripts/check.mjs",
+    "test": "node --test tests/*.test.mjs"
   }
 }

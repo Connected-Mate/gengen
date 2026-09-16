@@ -33,3 +33,19 @@ assert.match(html, /two calendar months/);
 assert.match(html, /Elapsed time does not imply daily or ongoing activity/);
 assert.match(html, /not a personalised issued credential/);
 console.log('Passed: pre-rendering, metadata structure, section anchors, project-base assets, original seal, eligibility and label transparency.');
+
+const studio = await readFile(new URL('studio/index.html', site), 'utf8');
+assert.match(studio, /<script type="module" src="\.\/studio\.mjs"><\/script>/, 'Studio entry module missing.');
+assert.match(studio, /connect-src 'none'/, 'Studio must keep photo/certificate processing local.');
+for (const file of ['studio/studio.mjs', 'studio/render.mjs', 'studio/certificate.mjs', 'studio/studio.css']) await access(new URL(file, site));
+for (const [file, source] of [['studio/index.html', studio], ['studio/studio.css', await readFile(new URL('studio/studio.css',site),'utf8')]]) {
+ for (const match of source.matchAll(/(?:href|src)="([^"#]+)"|url\(['"]?([^)'" ]+)/g)) {
+  const path = match[1] ?? match[2];
+  if (/^(?:https?:|data:|#)/.test(path)) continue;
+  const target = new URL(path, `https://connected-mate.github.io/gengen/${file}`);
+  assert(target.pathname.startsWith('/gengen/'), `Studio asset escaped project base: ${path}`);
+  const local = target.pathname.slice('/gengen/'.length);
+  await access(new URL(local.endsWith('/') ? local+'index.html' : (local || 'index.html'),site));
+ }
+}
+console.log('Passed: studio modules, local-processing policy and linked assets.');

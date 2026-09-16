@@ -558,3 +558,6 @@ footer .legal {
   *, *::before, *::after { transition: none !important; animation: none !important; }
   .button:hover { transform: none; }
 }
+
+.gengen-studio-link { margin-top: var(--space-lg); margin-right: var(--space-md); }
+.inline-link { text-decoration: underline; text-underline-offset: 3px; }

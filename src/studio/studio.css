@@ -6,3 +6,15 @@
 .next-input{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:12px;text-decoration:underline;text-underline-offset:4px}
 .certificate-help{display:flex;flex-wrap:wrap;column-gap:16px;margin-top:8px}.certificate-help a{display:inline-flex;align-items:center;min-height:44px;font-size:11px;text-decoration:underline;text-underline-offset:4px}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition:none!important}}
+/* Keep the working canvas near the top; this is an editor, not another landing page. */
+@media(min-width:701px){
+ .header{height:80px}
+ .intro{display:grid;grid-template-columns:1fr 1fr;column-gap:48px;align-items:center;padding:28px 0}
+ .intro .eyebrow{grid-column:1;grid-row:1}
+ .intro h1{grid-column:1;grid-row:2;margin:8px 0 0;font-size:56px;letter-spacing:-2.6px}
+ .intro>p:not(.eyebrow):not(.privacy){grid-column:2;grid-row:1/3;font-size:16px}
+ .intro .privacy{grid-column:2;grid-row:3;margin-top:8px}
+ .workspace{position:sticky;top:24px}
+ .canvas-stage{min-height:300px;padding:24px}
+ canvas{max-height:420px}
+}

@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { photoCrop, FORMATS } from './render.mjs';
+import { photoCrop, FORMATS } from '../src/studio/render.mjs';
 
 test('portrait and landscape source crops cover a square at every pan extreme',()=>{
   for(const [width,height] of [[4000,3000],[2400,4000],[800,800]])for(const zoom of [1,1.7,3])for(const x of [-1,0,1])for(const y of [-1,0,1]){
